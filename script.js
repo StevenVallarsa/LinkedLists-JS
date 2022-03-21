@@ -45,10 +45,22 @@ class LinkedList {
       lastNode.next = newTail;
     }
   }
+
+  removeHead() {
+    if (!this.head) {
+      console.log("This Linked List is empty");
+    } else {
+      this.head = this.head.next;
+    }
+  }
 }
 
 let linkedList = new LinkedList();
 linkedList.addToTail("TAIL");
-linkedList.addToTail("TAIL2");
-linkedList.addToHead("head");
+linkedList.addToHead("Head");
+linkedList.addToHead("Head2");
+linkedList.addToTail("TAIL3");
+linkedList.addToTail("TAIL3");
+
+linkedList.removeHead();
 linkedList.printList();
