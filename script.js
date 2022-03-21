@@ -23,16 +23,32 @@ class LinkedList {
 
   addToHead(data) {
     const newHead = new Node(data);
-    console.log(newHead);
     if (this.head) {
       newHead.next = this.head;
     }
     this.head = newHead;
   }
+
+  addToTail(data) {
+    const newTail = new Node(data);
+    if (!this.head) {
+      this.head = newTail;
+    } else {
+      let nextNode = this.head;
+      let lastNode = this.head;
+      while (nextNode) {
+        nextNode = nextNode.next;
+        if (nextNode) {
+          lastNode = nextNode;
+        }
+      }
+      lastNode.next = newTail;
+    }
+  }
 }
 
 let linkedList = new LinkedList();
-linkedList.addToHead("One");
-linkedList.addToHead("Two");
-linkedList.addToHead("Three");
+linkedList.addToTail("TAIL");
+linkedList.addToTail("TAIL2");
+linkedList.addToHead("head");
 linkedList.printList();
