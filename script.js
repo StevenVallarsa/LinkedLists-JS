@@ -34,15 +34,11 @@ class LinkedList {
     if (!this.head) {
       this.head = newTail;
     } else {
-      let nextNode = this.head;
-      let lastNode = this.head;
-      while (nextNode) {
-        nextNode = nextNode.next;
-        if (nextNode) {
-          lastNode = nextNode;
-        }
+      let currentNode = this.head;
+      while (currentNode.next) {
+        currentNode = currentNode.next;
       }
-      lastNode.next = newTail;
+      currentNode.next = newTail;
     }
   }
 
@@ -53,14 +49,31 @@ class LinkedList {
       this.head = this.head.next;
     }
   }
+
+  removeTail() {
+    if (!this.head) {
+      console.log("This Linked List is empty");
+    } else {
+      let currentNode = this.head;
+      let previousNode = this.head;
+      while (currentNode.next) {
+        console.log(previousNode, currentNode);
+        previousNode = currentNode;
+        currentNode = currentNode.next;
+      }
+      previousNode.next = null;
+      console.log(currentNode.data + " was removed");
+    }
+  }
 }
 
 let linkedList = new LinkedList();
 linkedList.addToTail("TAIL");
+linkedList.addToTail("TAIL2");
 linkedList.addToHead("Head");
 linkedList.addToHead("Head2");
 linkedList.addToTail("TAIL3");
-linkedList.addToTail("TAIL3");
+// linkedList.addToHead("TAIL3");
 
-linkedList.removeHead();
+linkedList.removeTail();
 linkedList.printList();
