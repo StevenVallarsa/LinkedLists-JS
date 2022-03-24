@@ -46,6 +46,7 @@ class LinkedList {
     if (!this.head) {
       console.log("This Linked List is empty");
     } else {
+      console.log(this.head.data + " was removed");
       this.head = this.head.next;
     }
   }
@@ -57,7 +58,6 @@ class LinkedList {
       let currentNode = this.head;
       let previousNode = this.head;
       while (currentNode.next) {
-        console.log(previousNode, currentNode);
         previousNode = currentNode;
         currentNode = currentNode.next;
       }
@@ -65,15 +65,34 @@ class LinkedList {
       console.log(currentNode.data + " was removed");
     }
   }
+
+  isDataInList(data) {
+    let count = 0;
+    if (!this.head) {
+      console.log("This Linked List is empty");
+    } else {
+      let currentNode = this.head;
+      while (currentNode) {
+        if (currentNode.data === data) {
+          count++;
+        }
+        currentNode = currentNode.next;
+      }
+    }
+    return count;
+  }
 }
 
 let linkedList = new LinkedList();
 linkedList.addToTail("TAIL");
 linkedList.addToTail("TAIL2");
 linkedList.addToHead("Head");
-linkedList.addToHead("Head2");
-linkedList.addToTail("TAIL3");
+// linkedList.addToHead("Head2");
+// linkedList.addToTail("TAIL3");
 // linkedList.addToHead("TAIL3");
 
-linkedList.removeTail();
+// linkedList.removeTail();
+// linkedList.removeHead();
 linkedList.printList();
+let number = linkedList.isDataInList("Head");
+console.log(`The requested data appears ${number} time${number === 1 ? "" : "s"} in the Linked List`);
